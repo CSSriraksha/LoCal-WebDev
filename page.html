@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoCal | Desi Campus Bites</title>
+    <link rel="stylesheet" href="stylei.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">LoCal</div>
+        <div class="nav-links">
+            <a href="#" onclick="showSection('home')">Home</a>
+            <a href="#" onclick="showSection('menu')">Menu</a>
+            <a href="#" onclick="showAdminLogin()">Admin</a>
+        </div>
+    </nav>
+
+    <section id="home" class="active">
+        <div class="hero">
+            <h1>Welcome to LoCal</h1>
+            <p>Fuel Your Day with Desi Bites</p>
+            <button onclick="showSection('menu')" class="hero-btn">Explore Menu</button>
+        </div>
+        <div class="about">
+            <h2>About Our Canteen</h2>
+            <p>LoCal brings you the best of Indian street food and meals, hygiene-checked and student-priced.<br> From Masala Dosa to Chai, we serve it all with love.</p>
+        </div>
+    </section>
+
+    <section id="menu">
+        <h2>Canteen Menu</h2>
+        <div id="food-list" class="grid"></div>
+        <div class="cart-section">
+            <h3>Your Plate</h3>
+            <ul id="cart-items"></ul>
+            <div class="bill-box">
+                <p>Subtotal: ₹<span id="subtotal">0</span></p>
+                <p>Campus Discount: -₹<span id="discount-amount">0</span></p>
+                <hr>
+                <p><strong>Total Payable: ₹<span id="final-total">0</span></strong></p>
+                <button onclick="showCheckoutForm()">Place Order</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="checkout-form">
+        <div class="card">
+            <h2>Order Details</h2>
+            <input type="text" id="cust-name" placeholder="Full Name">
+            <input type="email" id="cust-email" placeholder="Email Address">
+            
+            <h3>Chef's Visual Notes</h3>
+            <p>Draw specific instructions (e.g., cut style, plating)</p>
+            <div style="background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin-bottom: 10px;">
+                <canvas id="chef-canvas" width="400" height="200" style="cursor: crosshair; display: block; margin: auto; background: #fff;"></canvas>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <input type="color" id="brush-color" value="#d35400" style="width: 50px; height: 30px; padding: 0;">
+                    <button onclick="clearCanvas()" style="background: #7f8c8d; margin: 0;">Clear Canvas</button>
+                </div>
+            </div>
+
+            <h3>Additional Text Instructions</h3>
+            <textarea id="chef-notes" placeholder="Any other special instructions?" style="width: 100%; height: 80px; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; margin-bottom: 15px; font-family: Arial;"></textarea>
+            
+            <button onclick="processOrder()">Confirm & Submit Order</button>
+            <button onclick="showSection('menu')" style="background: #7f8c8d;">Back to Menu</button>
+        </div>
+    </section>
+
+    <section id="admin-login-sec">
+        <div class="card" style="max-width: 400px; margin: auto;">
+            <h2>Admin Login</h2>
+            <input type="password" id="admin-pass-input" placeholder="Enter Password">
+            <button onclick="checkAdminLogin()">Login</button>
+        </div>
+    </section>
+
+    <section id="admin">
+        <h2>Admin Dashboard</h2>
+        
+        <div class="card" style="border-top: 5px solid var(--yellow); margin-bottom: 40px;">
+            <h3>Incoming Orders</h3>
+            <div id="order-queue">
+                <p style="color: #7f8c8d;">No active orders.</p>
+            </div>
+        </div>
+
+        <div class="admin-controls">
+            <div class="card">
+                <h3>Add New Item</h3>
+                <input type="text" id="new-item-name" placeholder="Item Name">
+                <input type="number" id="new-item-price" placeholder="Price in ₹">
+                <input type="text" id="new-item-img" placeholder="Image URL">
+                <button onclick="addItem()">Update Canteen Menu</button>
+            </div>
+            <div class="card">
+                <h3>Discount Rules</h3>
+                <label>Min. Order Value (₹):</label>
+                <input type="number" id="threshold-input" value="200">
+                <label>Discount (%):</label>
+                <input type="number" id="discount-percent-input" value="15">
+                <button onclick="updateDiscount()">Apply Rule</button>
+            </div>
+        </div>
+
+        <h3>Menu Management</h3>
+        <table id="admin-table">
+            <thead>
+                <tr><th>Item</th><th>Price</th><th>Action</th></tr>
+            </thead>
+            <tbody id="admin-inventory"></tbody>
+        </table>
+    </section>
+<footer>
+    <div class="footer-logo">LoCal</div>
+    <p class="footer-motto">Hygienic. Authentic. Affordable. The Best of Desi Flavors, Right on Campus.</p>
+    
+    <div class="footer-contact">
+        <div class="contact-item">
+            <strong>Craving something specific?</strong>
+            <span>Drop us a line at <a href="mailto:support@local.com">support@local.com</a></span>
+        </div>
+        <div class="contact-item">
+            <strong>Find Your Flavor</strong>
+            <span>Main Canteen, Block A, Campus Ground</span>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 LoCal Campus Dining. All Rights Reserved.
+    </div>
+</footer>    <script src="pr.js"></script>
+</body>
+</html>
